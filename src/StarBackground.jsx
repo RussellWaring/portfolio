@@ -3,14 +3,21 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
 const StarBackground = () => {
+  // This runs when the particles engine initializes
   const particlesInit = async (main) => {
     await loadFull(main);
+  };
+
+  // This runs when the particles are fully loaded
+  const particlesLoaded = (container) => {
+    console.log("Particles loaded:", container);
   };
 
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
+      init={particlesInit}           // Initialization callback
+      loaded={particlesLoaded}       // Loaded callback
       options={{
         background: {
           color: "#0d0d0d",
@@ -31,7 +38,13 @@ const StarBackground = () => {
             type: "circle",
           },
           opacity: {
-            value: 0.8,
+            value: { min: 0, max: 0.8 },
+            animation: {
+              enable: true,
+              startValue: "min",
+              destroy: "max",
+              speed: 0.5,
+            },
           },
           size: {
             value: 2,
@@ -40,7 +53,7 @@ const StarBackground = () => {
           move: {
             enable: true,
             speed: 0.6,
-            direction: "bottom",
+            direction: "none",
             outModes: {
               default: "out",
             },
