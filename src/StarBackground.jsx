@@ -18,7 +18,11 @@ const StarBackground = () => {
         fpsLimit: 60,
         particles: {
           number: {
-            value: 100,
+            value: 120,
+            density: {
+              enable: true,
+              area: 800,
+            },
           },
           color: {
             value: "#ffffff",
@@ -30,11 +34,12 @@ const StarBackground = () => {
             value: 0.8,
           },
           size: {
-            value: 1.5,
+            value: 2,
+            random: true,
           },
           move: {
             enable: true,
-            speed: 0.5,
+            speed: 0.6,
             direction: "bottom",
             outModes: {
               default: "out",
@@ -44,7 +49,21 @@ const StarBackground = () => {
         interactivity: {
           events: {
             onHover: {
-              enable: false,
+              enable: true,
+              mode: "repulse",
+            },
+            onClick: {
+              enable: true,
+              mode: "push",
+            },
+          },
+          modes: {
+            repulse: {
+              distance: 100,
+              duration: 0.4,
+            },
+            push: {
+              quantity: 3,
             },
           },
         },
