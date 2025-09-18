@@ -1,16 +1,37 @@
 import React from "react";
 import StarBackground from "./StarBackground";
 import "./App.css";
+import Navbar from './Navbar';
+import Home from './Home';
+import Portfolio from './Portfolio';
+import DevBlog from "./DevBlog";
+import Footer from "./Footer";
+// import About from './About';
+// import Contact from './Contact';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <StarBackground />
-      <div className="content">
-        <h1>Software Developer, Analyst, Creative</h1>
-        <p>Hello! I'm Russell, a creative developer...</p>
+  <Router>
+    <StarBackground />
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/portfolio">
+              <Portfolio />
+            </Route>
+            <Route path="/blog">
+              <DevBlog />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
       </div>
-    </div>
+    </Router>
   );
 }
 
