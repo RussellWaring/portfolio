@@ -66,7 +66,7 @@ const Portfolio = () => {
         <Project
           image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/Java%20Game.png"
           title="Java Game"
-          description="A pure Java coded desktop game leveraging OOP principles and an MVC approach to managing structural logic. Features the A* "
+          description="A pure Java coded desktop game leveraging OOP principles and an MVC approach to managing structural logic. Features complex use of the A* algorithm."
           year="2021-2025"
           tags={['java', 'mvc', 'object-orientated', 'desktop', 'algorithms']}
         />
