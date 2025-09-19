@@ -112,3 +112,20 @@
   text-decoration: underline;
   font-weight: bold;
 }
+
+/* ——— responsive tweak below ——— */
+@media (max-width: 768px) {
+  .project {
+    flex-direction: column;     /* stack vertically */
+  }
+
+  .project-image,
+  .project-content {
+    flex: 1 1 100%;             /* full width */
+  }
+
+  .project-image img {
+    width: 100%;
+    height: auto;
+  }
+}
