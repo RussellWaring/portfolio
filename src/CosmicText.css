@@ -8,15 +8,33 @@
 }
 
 .cosmic-letter.active {
-    color: transparent;
-    background-image: linear-gradient(120deg,
-            #a855f7,
-            #6366f1,
-            #22d3ee,
-            #ec4899);
-    background-size: 300% 300%;
-    background-position: 50% 50%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    text-shadow: 0 0 6px #a855f7, 0 0 12px #22d3ee, 0 0 18px #ec4899;
+  color: transparent;
+  background-image: linear-gradient(
+    120deg,
+    #a855f7,
+    #6366f1,
+    #22d3ee,
+    #ec4899
+  );
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 6px #a855f7, 0 0 12px #22d3ee, 0 0 18px #ec4899;
+  animation: cosmicFlow 3s linear infinite; /* <--- animated gradient */
+}
+
+/* For 'rippling effect' */
+@keyframes cosmicFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

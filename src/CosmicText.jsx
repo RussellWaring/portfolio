@@ -1,10 +1,10 @@
-import React from "react";
 import { useEffect } from "react";
 import "./CosmicText.css";
 
-function CosmicText({ text }) {
+export default function CosmicText({ text }) {
   useEffect(() => {
     const letters = document.querySelectorAll(".cosmic-letter");
+    const radius = 60; // how far the effect spreads
 
     function handleMouseMove(e) {
       const mouseX = e.clientX;
@@ -18,14 +18,17 @@ function CosmicText({ text }) {
         const dx = mouseX - letterX;
         const dy = mouseY - letterY;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const radius = 40; // impacts range of 'cosmic' effect on text from cursor hover
 
         if (distance < radius) {
           letter.classList.add("active");
-          letter.style.opacity = 1 - distance / radius;
-        } else {
-          letter.classList.remove("active");
-          letter.style.opacity = 0.8;
+          letter.style.opacity = Math.max(0.5, 1 - distance / radius);
+          if (letter.fadeTimeout) clearTimeout(letter.fadeTimeout);
+        } else if (!letter.fadeTimeout) {
+          letter.fadeTimeout = setTimeout(() => {
+            letter.classList.remove("active");
+            letter.style.opacity = 0.8;
+            letter.fadeTimeout = null;
+          }, 500); // keep trail for 0.5s
         }
       });
     }
@@ -34,18 +37,6 @@ function CosmicText({ text }) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-//   return (
-//     <>
-//       {text.split("").map((char, idx) => (
-//         <span key={idx} className="cosmic-letter">
-//           {char}
-//         </span>
-//       ))}
-//     </>
-//   );
-    // }
-    
-    // --- Preserve spaces using \u00A0 ---
   return (
     <>
       {text.split("").map((char, idx) => (
@@ -56,5 +47,3 @@ function CosmicText({ text }) {
     </>
   );
 }
-
-export default CosmicText;
