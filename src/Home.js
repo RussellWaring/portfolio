@@ -16,7 +16,10 @@ const Home = () => {
         fontSize: '1rem',
         color: '#ccc',
         textAlign: 'center'
-      }}>Hello! I'm Russell, a creative developer...</p>
+      }}>
+        <CosmicText text="Hello! I'm Russell, a creative developer..."/>
+      </p>
+      
     </div>
     
   );

@@ -18,10 +18,11 @@ function CosmicText({ text }) {
         const dx = mouseX - letterX;
         const dy = mouseY - letterY;
         const distance = Math.sqrt(dx * dx + dy * dy);
+        const radius = 40; // impacts range of 'cosmic' effect on text from cursor hover
 
-        if (distance < 80) {
+        if (distance < radius) {
           letter.classList.add("active");
-          letter.style.opacity = 1 - distance / 120;
+          letter.style.opacity = 1 - distance / radius;
         } else {
           letter.classList.remove("active");
           letter.style.opacity = 0.8;
@@ -33,11 +34,23 @@ function CosmicText({ text }) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+//   return (
+//     <>
+//       {text.split("").map((char, idx) => (
+//         <span key={idx} className="cosmic-letter">
+//           {char}
+//         </span>
+//       ))}
+//     </>
+//   );
+    // }
+    
+    // --- Preserve spaces using \u00A0 ---
   return (
     <>
       {text.split("").map((char, idx) => (
         <span key={idx} className="cosmic-letter">
-          {char}
+          {char === " " ? "\u00A0" : char}
         </span>
       ))}
     </>
