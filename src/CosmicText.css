@@ -1,6 +1,6 @@
 .cosmic-letter {
     display: inline-block;
-    color: inherit;
+    /* color: inherit; */
     /* keeps the normal page text color */
     transition: color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease;
 }
