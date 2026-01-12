@@ -1,3 +1,5 @@
+import CosmicText from "./CosmicText";
+
 const Home = () => {
   return (
     <div className="home">
