@@ -52,7 +52,7 @@ const Portfolio = () => {
         color: '#ccc',
         textAlign: 'center'
       }}>
-        <CosmicText text="A few recent projects I have worked on. Each project features a series of tags identifying technologies and practices used in the development process.">
+        <CosmicText text="A few recent projects I have worked on. Each project features a series of tags identifying technologies and practices used in the development process."/>
       </p>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <Project
