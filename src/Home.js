@@ -1,8 +1,11 @@
 const Home = () => {
   return (
     <div className="home">
-      <h1 className="space-text">Software Developer, Analyst, Creative</h1>
+      <h1>
+        <CosmicText text="Software Developer, Analyst, Creative"/>
 
+      </h1>
+      {/* <h1>Software Developer, Analyst, Creative</h1> */}
 
       <p className="space-text" style={{
         maxWidth: '600px',

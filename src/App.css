@@ -35,39 +35,3 @@
   color: #aaa;
   opacity: 0.25;
 }
-
-/* For space effect on text */
-h1, p {
-  color: white;
-  background-image: linear-gradient(
-    120deg,
-    #a855f7,
-    #6366f1,
-    #22d3ee,
-    #ec4899
-  );
-  background-size: 300% 300%;
-  background-position: 0% 50%;
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  transition: color 0.3s ease;
-}
-
-.space-text:hover {
-  color: transparent;
-  animation: cosmicFlow 3s ease infinite;
-}
-
-@keyframes cosmicFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}

@@ -6,6 +6,7 @@ import Home from './Home';
 import Portfolio from './Portfolio';
 import DevBlog from "./DevBlog";
 import Footer from "./Footer";
+import CosmicText from "./CosmicText";
 // import About from './About';
 // import Contact from './Contact';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
