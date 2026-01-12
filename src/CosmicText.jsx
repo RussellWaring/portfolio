@@ -9,6 +9,9 @@ export default function CosmicText({ text }) {
     const letters = document.querySelectorAll(".cosmic-letter");
     lettersRef.current = Array.from(letters);
 
+    const radius = 35;   // distance around cursor
+    const fadeSpeed = 0.03; // opacity decrement per frame (adjust for speed)
+
     function handleMouseMove(e) {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
@@ -16,14 +19,7 @@ export default function CosmicText({ text }) {
 
     window.addEventListener("mousemove", handleMouseMove);
 
-    const radius = 35; // tighter area around cursor
-    const fadeDuration = 800; // ms
-
-    let lastTimestamps = new Map();
-
     function animate() {
-      const now = Date.now();
-
       lettersRef.current.forEach((letter) => {
         const rect = letter.getBoundingClientRect();
         const letterX = rect.left + rect.width / 2;
@@ -33,21 +29,15 @@ export default function CosmicText({ text }) {
         const dy = mouse.current.y - letterY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
+        let currentOpacity = parseFloat(letter.style.opacity || 1);
+
         if (distance < radius) {
           letter.classList.add("active");
           letter.style.opacity = Math.max(0.5, 1 - distance / radius);
-          lastTimestamps.set(letter, now); // mark last hover
         } else {
-          const lastHover = lastTimestamps.get(letter) || 0;
-          const delta = now - lastHover;
-          if (delta < fadeDuration) {
-            // gradually fade out
-            const t = delta / fadeDuration; // 0->1
-            letter.style.opacity = 1 - t * 0.5; // fade to 0.5 min
-          } else {
-            letter.classList.remove("active");
-            letter.style.opacity = 0.5;
-          }
+          letter.classList.remove("active");
+          currentOpacity -= fadeSpeed;
+          letter.style.opacity = Math.max(0.5, currentOpacity);
         }
       });
 
