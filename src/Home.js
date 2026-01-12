@@ -3,11 +3,11 @@ import CosmicText from "./CosmicText";
 const Home = () => {
   return (
     <div className="home">
-      <h1>
+      {/* <h1>
         <CosmicText text="Software Developer, Analyst, Creative"/>
 
-      </h1>
-      {/* <h1>Software Developer, Analyst, Creative</h1> */}
+      </h1> */}
+      <h1>Software Developer, Analyst, Creative</h1>
 
       <p className="space-text" style={{
         maxWidth: '600px',
@@ -19,7 +19,7 @@ const Home = () => {
       }}>
         <CosmicText text="Hello! I'm Russell, a creative developer..."/>
       </p>
-      
+
     </div>
     
   );
