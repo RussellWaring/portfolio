@@ -3,7 +3,7 @@
 .cosmic-letter {
     display: inline-block;
     color: white;
-    transition: color 0.8s ease, text-shadow 0.8s ease, opacity 0.8s ease;
+    transition: color 1.2s ease, text-shadow 0.8s ease, opacity 0.8s ease;
     opacity: 0.8;
 }
 
