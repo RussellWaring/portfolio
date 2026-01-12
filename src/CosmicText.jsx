@@ -1,39 +1,61 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./CosmicText.css";
 
 export default function CosmicText({ text }) {
+  const mouse = useRef({ x: 0, y: 0 });
+  const lettersRef = useRef([]);
+
   useEffect(() => {
     const letters = document.querySelectorAll(".cosmic-letter");
-    const radius = 60; // how far the effect spreads
+    lettersRef.current = Array.from(letters);
 
     function handleMouseMove(e) {
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    }
 
-      letters.forEach((letter) => {
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const radius = 35; // tighter area around cursor
+    const fadeDuration = 800; // ms
+
+    let lastTimestamps = new Map();
+
+    function animate() {
+      const now = Date.now();
+
+      lettersRef.current.forEach((letter) => {
         const rect = letter.getBoundingClientRect();
         const letterX = rect.left + rect.width / 2;
         const letterY = rect.top + rect.height / 2;
 
-        const dx = mouseX - letterX;
-        const dy = mouseY - letterY;
+        const dx = mouse.current.x - letterX;
+        const dy = mouse.current.y - letterY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < radius) {
           letter.classList.add("active");
           letter.style.opacity = Math.max(0.5, 1 - distance / radius);
-          if (letter.fadeTimeout) clearTimeout(letter.fadeTimeout);
-        } else if (!letter.fadeTimeout) {
-          letter.fadeTimeout = setTimeout(() => {
+          lastTimestamps.set(letter, now); // mark last hover
+        } else {
+          const lastHover = lastTimestamps.get(letter) || 0;
+          const delta = now - lastHover;
+          if (delta < fadeDuration) {
+            // gradually fade out
+            const t = delta / fadeDuration; // 0->1
+            letter.style.opacity = 1 - t * 0.5; // fade to 0.5 min
+          } else {
             letter.classList.remove("active");
-            letter.style.opacity = 0.8;
-            letter.fadeTimeout = null;
-          }, 500); // keep trail for 0.5s
+            letter.style.opacity = 0.5;
+          }
         }
       });
+
+      requestAnimationFrame(animate);
     }
 
-    window.addEventListener("mousemove", handleMouseMove);
+    animate();
+
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
