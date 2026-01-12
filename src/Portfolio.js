@@ -43,6 +43,7 @@ import Project from './Project';
 const Portfolio = () => {
   return (
     <div className="portfolio">
+      <CosmicText>
         <h1 className="space-text">Portfolio</h1>
         <p className="space-text" style={{
           maxWidth: '600px',
@@ -77,7 +78,8 @@ const Portfolio = () => {
             year="2024-2025"
             tags={['reactjs', 'ai', 'api', 'agi', 'sql', 'website', 'comingsoon']}
           />
-          </div>
+        </div>
+        </CosmicText>
     </div>
   );
 };
