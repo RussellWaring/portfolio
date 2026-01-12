@@ -37,7 +37,7 @@
 
 // export default Portfolio;
 
-
+import CosmicText from "./CosmicText";
 import Project from './Project';
 
 const Portfolio = () => {
@@ -52,7 +52,9 @@ const Portfolio = () => {
         color: '#ccc',
         textAlign: 'center'
       }}>
-        A few recent projects I have worked on. Each project features a series of tags identifying technologies and practices used in the development process.
+        <CosmicText>
+          A few recent projects I have worked on. Each project features a series of tags identifying technologies and practices used in the development process.
+        </CosmicText>
       </p>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <Project

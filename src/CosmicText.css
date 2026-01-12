@@ -2,7 +2,7 @@
     display: inline-block;
     color: inherit;
     /* preserves your original text color */
-    transition: color 0.8s ease, text-shadow 0.8s ease;
+    transition: color 1s ease, text-shadow 1s ease;
     /* smooth fade after mouse leaves */
 }
 
