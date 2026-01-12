@@ -1,10 +1,10 @@
 const Home = () => {
   return (
     <div className="home">
-      <h1>Software Developer, Analyst, Creative</h1>
+      <h1 className="space-text">Software Developer, Analyst, Creative</h1>
 
 
-      <p style={{
+      <p className="space-text" style={{
         maxWidth: '600px',
         margin: '50px auto 75px auto',
         lineHeight: '1.6',

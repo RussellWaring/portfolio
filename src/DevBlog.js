@@ -8,8 +8,8 @@ const DevBlog = () => {
 
   return (
     <div className="dev-blog">
-      <h1>Dev Blog</h1>
-      <p style={{
+      <h1 className="space-text">Dev Blog</h1>
+      <p className="space-text" style={{
         maxWidth: '600px',
         margin: '50px auto 75px auto',
         lineHeight: '1.6',

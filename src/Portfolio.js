@@ -43,8 +43,8 @@ import Project from './Project';
 const Portfolio = () => {
   return (
     <div className="portfolio">
-      <h1>Portfolio</h1>
-      <p style={{
+      <h1 className="space-text">Portfolio</h1>
+      <p className="space-text" style={{
         maxWidth: '600px',
         margin: '50px auto 75px auto',
         lineHeight: '1.6',
