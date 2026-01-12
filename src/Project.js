@@ -1,10 +1,12 @@
 // Project.js
 import React from 'react';
 import './Project.css';
+import CosmicText from "./CosmicText";
 
 const Project = ({ image, title, description, year, tags, link }) => {
   return (
     <div className="project">
+      <CosmicText>
       <div className="project-image">
         <img src={image} alt={title} />
       </div>
@@ -20,7 +22,8 @@ const Project = ({ image, title, description, year, tags, link }) => {
         {link && (
           <a href={link} className="project-link">View Project</a>
         )}
-      </div>
+        </div>
+        </CosmicText>
     </div>
   );
 };
