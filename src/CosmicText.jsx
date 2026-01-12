@@ -1,3 +1,4 @@
+// src/components/CosmicText.jsx
 import { useEffect, useRef } from "react";
 import "./CosmicText.css";
 
@@ -6,26 +7,20 @@ export default function CosmicText({ text }) {
   const lettersRef = useRef([]);
 
   useEffect(() => {
-  const letters = document.querySelectorAll(".cosmic-letter");
-  lettersRef.current = Array.from(letters);
-  const radius = 35; // distance around cursor
-  const fadeDuration = 1000; // 1 second
+    const letters = document.querySelectorAll(".cosmic-letter");
+    lettersRef.current = Array.from(letters);
 
-  lettersRef.current.forEach((letter) => {
-    if (!letter._lastActive) letter._lastActive = 0;
-  });
+    const radius = 35; // pixels around cursor
 
     function handleMouseMove(e) {
-    mouse.current.x = e.clientX;
-    mouse.current.y = e.clientY;
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
     }
 
     window.addEventListener("mousemove", handleMouseMove);
 
     function animate() {
-    const now = Date.now();
-
-    lettersRef.current.forEach((letter) => {
+      lettersRef.current.forEach((letter) => {
         const rect = letter.getBoundingClientRect();
         const letterX = rect.left + rect.width / 2;
         const letterY = rect.top + rect.height / 2;
@@ -35,28 +30,19 @@ export default function CosmicText({ text }) {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < radius) {
-        letter.classList.add("active");
-        letter._lastActive = now;
-        letter.style.opacity = 1;
-        } else if (letter._lastActive) {
-        const delta = now - letter._lastActive;
-        if (delta < fadeDuration) {
-            letter.style.opacity = 1 - (delta / fadeDuration) * 0.5; // fades to 0.5
+          letter.classList.add("active");
         } else {
-            letter.classList.remove("active");
-            letter.style.opacity = 0.5;
+          letter.classList.remove("active");
         }
-        }
-    });
+      });
 
-    requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
     }
 
     animate();
 
     return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, []);
-
+  }, []);
 
   return (
     <>

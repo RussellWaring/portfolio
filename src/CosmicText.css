@@ -1,10 +1,12 @@
 .cosmic-letter {
     display: inline-block;
-    /* color: inherit; */
-    /* keeps the normal page text color */
-    transition: color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease;
+    color: inherit;
+    /* preserves your original text color */
+    transition: color 0.8s ease, text-shadow 0.8s ease;
+    /* smooth fade after mouse leaves */
 }
 
+/* Animated gradient keyframes for cosmic effect */
 @keyframes cosmicFlow {
     0% {
         background-position: 0% 50%;
@@ -19,18 +21,20 @@
     }
 }
 
+/* Active letters (hovered or near cursor) */
 .cosmic-letter.active {
     color: transparent;
+    /* gradient shows instead of text color */
     background-image: linear-gradient(120deg,
-        #a855f7,
-        #6366f1,
-        #22d3ee,
-        #ec4899
-    );
+            #a855f7,
+            #6366f1,
+            #22d3ee,
+            #ec4899);
     background-size: 300% 300%;
     background-position: 0% 50%;
     -webkit-background-clip: text;
     background-clip: text;
     text-shadow: 0 0 6px #a855f7, 0 0 12px #22d3ee, 0 0 18px #ec4899;
     animation: cosmicFlow 3s linear infinite;
+    /* rippling gradient animation */
 }
