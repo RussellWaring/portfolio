@@ -43,7 +43,6 @@ import Project from './Project';
 const Portfolio = () => {
   return (
     <div className="portfolio">
-      {/* <CosmicText> */}
         <h1 className="space-text">Portfolio</h1>
         <p className="space-text" style={{
           maxWidth: '600px',
@@ -79,7 +78,6 @@ const Portfolio = () => {
             tags={['reactjs', 'ai', 'api', 'agi', 'sql', 'website', 'comingsoon']}
           />
           </div>
-      {/* </CosmicText> */}
     </div>
   );
 };
