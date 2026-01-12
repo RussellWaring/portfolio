@@ -6,7 +6,6 @@ export default function CosmicText({ children, radius = 35 }) {
   const mouse = useRef({ x: 0, y: 0 });
   const lettersRef = useRef([]);
 
-  // Wrap all text nodes in spans
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -19,21 +18,30 @@ export default function CosmicText({ children, radius = 35 }) {
     );
 
     const textNodes = [];
-    while (walker.nextNode()) {
-      textNodes.push(walker.currentNode);
-    }
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
 
-    textNodes.forEach((node) => {
+    textNodes.forEach(node => {
       const parent = node.parentNode;
-      if (node.nodeValue.trim() === "") return;
+      if (!node.nodeValue.trim()) return;
 
       const fragment = document.createDocumentFragment();
-      node.nodeValue.split("").forEach((char) => {
+
+      // Decide whether to split or not based on length
+      const shouldSplit = node.nodeValue.trim().length > 5; // threshold for splitting
+
+      if (shouldSplit) {
+        node.nodeValue.split("").forEach(char => {
+          const span = document.createElement("span");
+          span.className = "cosmic-letter";
+          span.textContent = char === " " ? "\u00A0" : char;
+          fragment.appendChild(span);
+        });
+      } else {
         const span = document.createElement("span");
         span.className = "cosmic-letter";
-        span.textContent = char === " " ? "\u00A0" : char;
+        span.textContent = node.nodeValue;
         fragment.appendChild(span);
-      });
+      }
 
       parent.replaceChild(fragment, node);
     });
@@ -41,7 +49,6 @@ export default function CosmicText({ children, radius = 35 }) {
     lettersRef.current = container.querySelectorAll(".cosmic-letter");
   }, [children]);
 
-  // Mouse move logic
   useEffect(() => {
     function handleMouseMove(e) {
       mouse.current.x = e.clientX;
@@ -51,13 +58,10 @@ export default function CosmicText({ children, radius = 35 }) {
     window.addEventListener("mousemove", handleMouseMove);
 
     function animate() {
-      lettersRef.current.forEach((letter) => {
+      lettersRef.current.forEach(letter => {
         const rect = letter.getBoundingClientRect();
-        const letterX = rect.left + rect.width / 2;
-        const letterY = rect.top + rect.height / 2;
-
-        const dx = mouse.current.x - letterX;
-        const dy = mouse.current.y - letterY;
+        const dx = mouse.current.x - (rect.left + rect.width / 2);
+        const dy = mouse.current.y - (rect.top + rect.height / 2);
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < radius) {
@@ -75,5 +79,5 @@ export default function CosmicText({ children, radius = 35 }) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [radius]);
 
-  return <div ref={containerRef}>{children}</div>;
+  return <span ref={containerRef}>{children}</span>;
 }
