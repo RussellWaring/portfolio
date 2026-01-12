@@ -19,8 +19,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <CosmicText Text={<Home />}/>
-              {/* <Home /> */}
+              <Home />
             </Route>
             <Route path="/portfolio">
               <Portfolio />

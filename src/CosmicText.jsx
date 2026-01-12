@@ -1,17 +1,48 @@
-// src/components/CosmicText.jsx
 import { useEffect, useRef } from "react";
 import "./CosmicText.css";
 
-export default function CosmicText({ text }) {
+export default function CosmicText({ children, radius = 35 }) {
+  const containerRef = useRef(null);
   const mouse = useRef({ x: 0, y: 0 });
   const lettersRef = useRef([]);
 
+  // Wrap all text nodes in spans
   useEffect(() => {
-    const letters = document.querySelectorAll(".cosmic-letter");
-    lettersRef.current = Array.from(letters);
+    const container = containerRef.current;
+    if (!container) return;
 
-    const radius = 35; // pixels around cursor
+    const walker = document.createTreeWalker(
+      container,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
 
+    const textNodes = [];
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach((node) => {
+      const parent = node.parentNode;
+      if (node.nodeValue.trim() === "") return;
+
+      const fragment = document.createDocumentFragment();
+      node.nodeValue.split("").forEach((char) => {
+        const span = document.createElement("span");
+        span.className = "cosmic-letter";
+        span.textContent = char === " " ? "\u00A0" : char;
+        fragment.appendChild(span);
+      });
+
+      parent.replaceChild(fragment, node);
+    });
+
+    lettersRef.current = container.querySelectorAll(".cosmic-letter");
+  }, [children]);
+
+  // Mouse move logic
+  useEffect(() => {
     function handleMouseMove(e) {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
@@ -42,15 +73,7 @@ export default function CosmicText({ text }) {
     animate();
 
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [radius]);
 
-  return (
-    <>
-      {text.split("").map((char, idx) => (
-        <span key={idx} className="cosmic-letter">
-          {char === " " ? "\u00A0" : char}
-        </span>
-      ))}
-    </>
-  );
+  return <div ref={containerRef}>{children}</div>;
 }
