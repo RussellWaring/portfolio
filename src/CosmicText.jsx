@@ -21,29 +21,31 @@ export default function CosmicText({ children, radius = 35 }) {
     while (walker.nextNode()) textNodes.push(walker.currentNode);
 
     textNodes.forEach(node => {
-      const parent = node.parentNode;
-      if (!node.nodeValue.trim()) return;
+        const parent = node.parentNode;
+        if (!node.nodeValue.trim()) return;
 
-      const fragment = document.createDocumentFragment();
+        const fragment = document.createDocumentFragment();
 
-      // Decide whether to split or not based on length
-      const shouldSplit = node.nodeValue.trim().length > 5; // threshold for splitting
+        // Only split if parent is block-level (h1, h2, h3, p, etc.)
+        const blockElements = ["P", "H1", "H2", "H3", "H4", "H5", "H6"];
+        const shouldSplit = blockElements.includes(parent.tagName);
 
-      if (shouldSplit) {
-        node.nodeValue.split("").forEach(char => {
-          const span = document.createElement("span");
-          span.className = "cosmic-letter";
-          span.textContent = char === " " ? "\u00A0" : char;
-          fragment.appendChild(span);
-        });
-      } else {
-        const span = document.createElement("span");
-        span.className = "cosmic-letter";
-        span.textContent = node.nodeValue;
-        fragment.appendChild(span);
-      }
+        if (shouldSplit) {
+            node.nodeValue.split("").forEach(char => {
+            const span = document.createElement("span");
+            span.className = "cosmic-letter";
+            span.textContent = char === " " ? "\u00A0" : char;
+            fragment.appendChild(span);
+            });
+        } else {
+            // Inline elements or tags: wrap the whole text as one span
+            const span = document.createElement("span");
+            span.className = "cosmic-letter";
+            span.textContent = node.nodeValue;
+            fragment.appendChild(span);
+        }
 
-      parent.replaceChild(fragment, node);
+        parent.replaceChild(fragment, node);
     });
 
     lettersRef.current = container.querySelectorAll(".cosmic-letter");
