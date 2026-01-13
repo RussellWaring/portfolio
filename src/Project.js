@@ -1,7 +1,6 @@
 // Project.js
 import React from 'react';
 import './Project.css';
-import CosmicText from "./CosmicText";
 
 const Project = ({ image, title, description, year, tags, link }) => {
   return (
