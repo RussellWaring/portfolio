@@ -6,6 +6,12 @@
     /* smooth fade after mouse leaves */
 }
 
+/* For tags / non-split spans */
+.cosmic-letter[data-split="false"] {
+    display: inline;
+    /* removes extra spacing */
+}
+
 /* Animated gradient keyframes for cosmic effect */
 @keyframes cosmicFlow {
     0% {
