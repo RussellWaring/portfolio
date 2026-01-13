@@ -22,12 +22,14 @@ export default function CosmicText({ children, radius = 35 }) {
 
     textNodes.forEach(node => {
         const parent = node.parentNode;
-        if (!node.nodeValue.trim()) return;
+      if (!node.nodeValue.trim()) return;
+      
+      if (parent.closest?.('[data-cosmic="ignore"]')) return;
 
         const fragment = document.createDocumentFragment();
 
         // Only split if parent is block-level (h1, h2, h3, p, etc.)
-        const blockElements = ["P", "H1", "H2", "H3", "H4", "H5", "H6"];
+        const blockElements = ["P", "LI", "DIV", "H1", "H2", "H3", "H4", "H5", "H6"];
         const shouldSplit = blockElements.includes(parent.tagName);
 
         if (shouldSplit) {

@@ -15,7 +15,7 @@ const Project = ({ image, title, description, year, tags, link }) => {
           <span className="project-year">{year}</span>
         </div>
         <p className="project-description">{description}</p>
-        <div className="project-tags">
+        <div className="project-tags" data-cosmic="ignore">
           {tags.map(tag => <span key={tag}>#{tag}</span>)}
         </div>
         {link && (

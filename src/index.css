@@ -101,3 +101,29 @@ code {
     opacity: 1;
   }
 }
+
+.home {
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-hero {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.home-chevron-slot {
+  /* this sits at the bottom of the landing area */
+  padding-bottom: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+/* .resume-anchor {
+  padding-top: 200px;
+} */
