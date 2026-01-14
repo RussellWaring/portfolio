@@ -58,7 +58,8 @@ const Home = () => {
               textAlign: "center",
             }}
           >
-            Hello! I'm Russell, a creative developer...
+            Thank you for visiting my website.<br />
+            Find my resume by scrolling down or clicking the arrow.
           </p>
         </CosmicText>
 
