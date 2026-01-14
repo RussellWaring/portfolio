@@ -182,7 +182,6 @@ const Resume = () => {
         <ul className="resume-bullets">
           <li>Microsoft Certified: Azure Fundamentals (AZ-900)</li>
           <li>Foundational C# with Microsoft</li>
-          <li>Google Analytics 4 Certification</li>
           <li>StackAdapt Basic Programmatic Certification</li>
           <li>Entry Certificate in Business Analysis (ECBA) – In Progress, expected Q1 2026</li>
         </ul>
@@ -212,6 +211,17 @@ const Resume = () => {
             <li>
               Developed CRUD-based application with integrated data visualization
               and reporting features.
+            </li>
+          </ul>
+        </div>
+
+        <div className="resume-project">
+          <div className="resume-role-title">
+            Portfolio Site (this site) – React, Node.js, HTML/CSS
+          </div>
+          <ul className="resume-bullets">
+            <li>
+              Portfolio website built using React with component-based architecture and modern JavaScript.
             </li>
           </ul>
         </div>
