@@ -38,8 +38,19 @@ const Home = () => {
 
   const scrollToResume = () => {
     resumeRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    // no need to setShowChevron(false); scroll handler will hide it
   };
+
+  const goToPortfolio = () => {
+  window.location.hash = "#/portfolio";
+};
+
+// const downloadResume = () => {
+//   // Option A: scroll to resume section
+//   scrollToResume();
+
+//   // Option B: download PDF (recommended)
+//   // window.open("/Russell_Waring_Resume.pdf", "_blank");
+// };
 
   return (
     <>
@@ -51,17 +62,28 @@ const Home = () => {
             className="space-text"
             style={{
               maxWidth: "600px",
-              margin: "50px auto 75px auto",
+              margin: "50px auto 30px auto",
               lineHeight: "1.6",
               fontSize: "1rem",
               color: "#ccc",
               textAlign: "center",
             }}
           >
-            Thank you for visiting my website.<br />
-            Find my resume by scrolling down or clicking the arrow.
+            I build web, desktop, and mobile apps using technologies like C#, Java, SQL,<br/>
+            Flutter, and .NET. This website was built using React and Node.js.
           </p>
+
         </CosmicText>
+
+        <div className="cta-row">
+            <button className="cta primary" onClick={goToPortfolio}>
+              View Portfolio
+            </button>
+
+          <a className="cta secondary" href="/Russell_Waring_Resume.pdf" download>
+              Download Resume
+            </a>
+          </div>
 
         {showChevron && (
           <div className="chevron-slot">

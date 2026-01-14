@@ -47,7 +47,7 @@
 .chevron-slot {
     display: flex;
     justify-content: center;
-    /* margin-top: 25px; */
+    margin-top: 40px;
     /* pulls it closer to the paragraph; tweak */
     padding-bottom: 40px;
     /* gives it breathing room before resume */
