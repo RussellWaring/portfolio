@@ -65,6 +65,14 @@ const Portfolio = () => {
             link="https://github.com/Tsukiyomi-Inari/BirdNerd"
           />
           <Project
+            image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/start-it.png"
+            title="start-it.ca"
+            description="A job board web app that helps users browse and explore entry-level opportunities."
+            year="2026"
+            tags={['React.js', 'Node.js', 'Vite', 'Firebase', 'Database', 'authentication', 'api', 'ai']}
+            link="https://github.com/RussellWaring/start-it"
+          />
+          <Project
             image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/Java%20Game.png"
             title="Java Game"
             description="A pure Java coded desktop game leveraging OOP principles and an MVC approach to managing structural logic. Features complex use of the A* algorithm."
