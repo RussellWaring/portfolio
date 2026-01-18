@@ -66,7 +66,7 @@ const Portfolio = () => {
           />
           <Project
             image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/start-it.png"
-            title="start-it.ca"
+            title="start-it"
             description="A job board web app that helps users browse and explore entry-level opportunities."
             year="2026"
             tags={['React.js', 'Node.js', 'Vite', 'Firebase', 'Database', 'authentication', 'api', 'ai']}
