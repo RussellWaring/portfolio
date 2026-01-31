@@ -2,7 +2,7 @@ import "./Home.css";
 
 const Home = () => {
   const openResume = () => {
-    window.open("https://waring.dev/#/RussellWaring_Resume.pdf", "_blank", "noopener,noreferrer");
+    window.open("/RussellWaring_Resume.pdf", "_blank", "noopener,noreferrer");
   };
 
   const contactMe = () => {
@@ -68,9 +68,14 @@ const Home = () => {
             </p>
 
             <div className="home__buttonRow">
-              <button className="home__btn home__btn--secondary" onClick={openResume} type="button">
+              <a
+                className="home__btn home__btn--secondary"
+                href="/Russell_Waring_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
                 View Resume
-              </button>
+              </a>
 
               <button className="home__btn home__btn--primary" onClick={contactMe} type="button">
                 Contact Me
