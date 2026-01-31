@@ -20,7 +20,7 @@ const DevBlog = () => {
           margin: '50px auto 75px auto',
           lineHeight: '1.6',
           fontSize: '1rem',
-          color: '#ccc',
+          color: 'var(--mutedText)',
           textAlign: 'center'
           }}>Coming soon...</p>
     </div>
