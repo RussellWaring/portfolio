@@ -1,41 +1,121 @@
+/* === Project Card Container === */
 .project {
   display: flex;
-  border-radius: 8px;
+  height: 180px;            
+  border-radius: 12px;
   overflow: hidden;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  margin-bottom: 50px;
-  height: 250px;
-
-  /* optional but usually looks better once theme exists */
-  /* border: 1px solid var(--cardBorder); */
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 18px;        
   background: transparent;
+  cursor: pointer;
 }
 
 .project:hover {
   box-shadow: var(--cardHoverShadow);
 }
 
+/* IMAGE COLUMN */
 .project-image {
-  flex: 0 0 40%;
+  flex: 0 0 25%;
   height: 100%;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.project-image img {
-  height: 100%;
-  width: 100%;
+/* ==========================================================
+   DEVICE FRAMES: SAME DIMENSIONS FOR ALL
+   - Mobile vs laptop differs ONLY by frame styling
+   - The preview rectangle stays identical
+========================================================== */
+.device-frame {
+  position: relative;
+
+  width: 220px;
+  aspect-ratio: 3 / 2;
+  height: auto;
+
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.45);
+
+  overflow: visible; /*TODO: change to visible??? */
+  display: grid;
+  place-items: center;
+}
+
+/* “screen” inset border */
+.device-frame::before {
+  content: "";
+  position: absolute;
+  inset: 6px;        
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+/* screenshot */
+.device-frame img {
+  position: absolute;
+  inset: 7px;           
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
+  border-radius: 9px;
+
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
+
+
+/* === LAPTOP FRAME === */
+.frame--laptop {
+  border-radius: 14px;
+}
+
+.frame--laptop::after {
+  content: "";
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  bottom: -10px;
+
+  height: 6px;           
+  border-radius: 0 0 12px 12px;
+
+  background: rgba(21, 21, 21, 0.2);   
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.50); */
+}
+
+/* === MOBILE FRAME === */
+.frame--mobile {
+  border-radius: 18px;   
+}
+
+.frame--mobile::before {
+  inset: 7px;
+  border-radius: 12px;
+}
+
+/* optional: slightly thicker bezel for “phone” feel */
+.frame--mobile img {
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  border-radius: 11px;
+}
+
+/* === CONTENT COLUMN === */
 .project-content {
   flex: 1;
-  padding: 20px;
-  text-align: left;
+  padding: 18px 20px 14px 14px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
+  min-height: 0;
 }
 
 .project-header {
@@ -50,66 +130,82 @@
 }
 
 .project-description {
-  flex-grow: 1;
+  margin: 0;
   line-height: 1.5;
   color: var(--text);
 }
 
+/* === FOOTER (TAGS + CTA) === */
+.project-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .project-tags {
   font-size: 0.9em;
-  color: var(--text);}
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
-/* If your tags are actual <span> elements */
 .project-tags span {
-  margin-right: 8px;
-  color: var(--mutedtext);
+  color: var(--mutedText);
   opacity: 0.9;
 }
 
-/* If you want tags to look like subtle chips (optional) */
-/* .project-tags span {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--cardBorder);
-  background: transparent;
-} */
-
-/* Link */
+/* CTA (not a nested <a>; should be a <span> in JSX) */
 .project-link {
-  align-self: flex-start;
-  color: var(--text);
-  /* theme-aware */
-  opacity: 0.9;
-  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 700;
+  opacity: 0.9;
+  white-space: nowrap;
 }
 
-.project-link:hover {
-  opacity: 1;
+.project-link-arrow {
+  transition: transform 0.2s ease;
 }
 
-.portfolio-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.project:hover .project-link-arrow {
+  transform: translateX(4px);
 }
 
-/* ——— responsive tweak below ——— */
+/* =========================
+   MOBILE LAYOUT
+========================= */
 @media (max-width: 768px) {
   .project {
+    height: auto;
     flex-direction: column;
-    height: auto;
-    /* prevents weird crop on stack */
   }
 
-  .project-image,
-  .project-content {
+  .project-image {
     flex: 1 1 100%;
+    padding: 14px 14px 0 14px;
   }
 
-  .project-image img {
+  .device-frame {
+    /* max-width: 100%;
+    height: 190px; */
+    width: min(92%, 260px);
+  }
+
+  .project-content {
+    padding: 14px 16px 16px 16px;
+  }
+
+  .project-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .project-link {
     width: 100%;
-    height: auto;
+    justify-content: flex-end;
   }
 }
