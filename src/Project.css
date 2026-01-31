@@ -7,7 +7,7 @@
   transition: box-shadow 0.3s ease;
   margin-bottom: 18px;        
   background: transparent;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .project:hover {

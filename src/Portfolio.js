@@ -35,6 +35,23 @@ const Portfolio = () => {
                 }}
             >
                 <Project
+                    device="laptop"
+                    image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/start-it.png"
+                    title="start-it.ca"
+                    description="A job board web app that helps users browse and explore entry-level opportunities."
+                    year="2026-Present"
+                    tags={[
+                        "react.js",
+                        "node.js",
+                        "vite",
+                        "firebase",
+                        "authentication",
+                        "api",
+                        "ai",
+                    ]}
+                    link="https://russellwaring.github.io/start-it/#/"
+                />
+                <Project
                     device="mobile"
                     image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/mobile.PNG"
                     title="BirdNerd"
@@ -54,23 +71,6 @@ const Portfolio = () => {
                 />
                 <Project
                     device="laptop"
-                    image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/start-it.png"
-                    title="start-it"
-                    description="A job board web app that helps users browse and explore entry-level opportunities."
-                    year="     2026"
-                    tags={[
-                        "react.js",
-                        "node.js",
-                        "vite",
-                        "firebase",
-                        "authentication",
-                        "api",
-                        "ai",
-                    ]}
-                    link="https://russellwaring.github.io/start-it/#/"
-                />
-                <Project
-                    device="laptop"
                     image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/Java%20Game.png"
                     title="Java Game"
                     description="A pure Java coded desktop game leveraging OOP principles and an MVC approach to managing structural logic. Features complex use of the A* algorithm."
@@ -85,19 +85,20 @@ const Portfolio = () => {
                 />
                 <Project
                     device="laptop"
-                    image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/website.png"
-                    title="Pizzamymind"
-                    description="Unofficial pie ranking website of the Greater Toronto Area. Uses ReactJS, AGI API, and user authentication to create an interactable experience for seeking the best pizza in Toronto."
-                    year="2024-2025"
+                    image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/dms.png"
+                    title="Donation Management System"
+                    description="WPF desktop CRUD app for tracking donations by user. Featured data visualization, integrated SQL SERVER data operations and reporting style outputs."
+                    year="2022"
                     tags={[
-                        "reactjs",
-                        "ai",
-                        "api",
-                        "agi",
-                        "sql",
-                        "website",
-                        "comingsoon",
+                        "wpf",
+                        "xaml",
+                        "..net",
+                        "sql server",
+                        "c#",
+                        "stored procedures",
+                        "data analysis",
                     ]}
+                    link="https://github.com/RussellWaring/Donation-Management-System"
                 />
             </div>
         </div>
