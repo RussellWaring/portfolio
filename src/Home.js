@@ -29,7 +29,13 @@ const Home = () => {
 
           <p className="home__subtext">
             {/* I build web, desktop, and mobile apps using technologies like C#, Java, SQL, Flutter, and .NET. This website was built using React and Node.js. */}
-            Born in the small town of Uxbridge, Ontario, I grew up loving the outdoors, playing hockey, attending stay-over summer camps and spending time watching movies and playing video games.  I attribute my upbringing to my collaborative spirit and communication confidence.  20 years later, you can find me studying various programming technologies building a career in software development.  Feel free to look at the projects I’m currently working on, and don’t hesitate to reach out!
+            Born in the small town of Uxbridge, Ontario, I grew up loving the outdoors,
+            playing hockey, attending stay-over summer camps and spending time watching
+            movies and playing video games. I attribute my collaborative spirits and
+            communication confidence to my upbringing.  20 years later, you can find me
+            studying various programming technologies building a career in software
+            development. Feel free to look at the projects I’m currently working on,
+            and don’t hesitate to reach out!
           </p>
 
           {/* (Buttons moved to right side per your plan) */}

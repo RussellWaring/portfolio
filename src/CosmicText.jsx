@@ -3,7 +3,7 @@ import "./CosmicText.css";
 
 export default function CosmicText({ children, radius = 35 }) {
   const containerRef = useRef(null);
-  const mouse = useRef({ x: 0, y: 0 });
+  const mouse = useRef({ x: -9999, y: -9999 }); // start "offscreen"
   const lettersRef = useRef([]);
 
   useEffect(() => {
@@ -27,12 +27,10 @@ export default function CosmicText({ children, radius = 35 }) {
 
       const fragment = document.createDocumentFragment();
 
-      // Only split if parent is block-ish 
       const blockElements = ["P", "LI", "DIV", "H1", "H2", "H3", "H4", "H5", "H6"];
       const shouldSplit = blockElements.includes(parent.tagName);
 
       if (!shouldSplit) {
-        // Keep inline nodes intact 
         const span = document.createElement("span");
         span.className = "cosmic-letter";
         span.textContent = node.nodeValue;
@@ -41,7 +39,6 @@ export default function CosmicText({ children, radius = 35 }) {
         return;
       }
 
-      // Split into tokens: words + whitespace (spaces as wrap points)
       const tokens = node.nodeValue.split(/(\s+)/);
 
       tokens.forEach((tok) => {
@@ -72,12 +69,51 @@ export default function CosmicText({ children, radius = 35 }) {
   }, [children]);
 
   useEffect(() => {
-    function handleMouseMove(e) {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
-    }
+    // Treat touch devices differently (tap should fade out)
+    const isCoarsePointer =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(pointer: coarse)").matches;
 
-    window.addEventListener("mousemove", handleMouseMove);
+    let clearTimer = null;
+
+    const setPoint = (x, y) => {
+      mouse.current.x = x;
+      mouse.current.y = y;
+
+      // On mobile/touch: clear shortly after last contact
+      if (isCoarsePointer) {
+        if (clearTimer) clearTimeout(clearTimer);
+        clearTimer = setTimeout(() => {
+          mouse.current.x = -9999;
+          mouse.current.y = -9999;
+        }, 650); // tweak: 400-900ms feels good
+      }
+    };
+
+    const clearPoint = () => {
+      if (clearTimer) clearTimeout(clearTimer);
+      clearTimer = null;
+      mouse.current.x = -9999;
+      mouse.current.y = -9999;
+    };
+
+    // Pointer events cover mouse + touch + pen
+    const onPointerMove = (e) => setPoint(e.clientX, e.clientY);
+    const onPointerDown = (e) => setPoint(e.clientX, e.clientY);
+    const onPointerUp = () => clearPoint();
+    const onPointerCancel = () => clearPoint();
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerdown", onPointerDown, { passive: true });
+    window.addEventListener("pointerup", onPointerUp, { passive: true });
+    window.addEventListener("pointercancel", onPointerCancel, { passive: true });
+
+    // If the user scrolls/changes tabs, also clear
+    window.addEventListener("blur", clearPoint);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) clearPoint();
+    });
 
     let raf = 0;
     function animate() {
@@ -97,7 +133,12 @@ export default function CosmicText({ children, radius = 35 }) {
     animate();
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerCancel);
+      window.removeEventListener("blur", clearPoint);
+      if (clearTimer) clearTimeout(clearTimer);
       cancelAnimationFrame(raf);
     };
   }, [radius]);
