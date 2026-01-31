@@ -69,7 +69,7 @@ export default function CosmicText({ children, radius = 35 }) {
   }, [children]);
 
   useEffect(() => {
-    // Treat touch devices differently (tap should fade out)
+    // For touch devices - tap should fade out
     const isCoarsePointer =
       typeof window !== "undefined" &&
       window.matchMedia &&
@@ -87,7 +87,7 @@ export default function CosmicText({ children, radius = 35 }) {
         clearTimer = setTimeout(() => {
           mouse.current.x = -9999;
           mouse.current.y = -9999;
-        }, 650); // tweak: 400-900ms feels good
+        }, 850); // adjusts fade on touch device: 400-900ms feels good
       }
     };
 
