@@ -27,12 +27,12 @@ export default function CosmicText({ children, radius = 35 }) {
 
       const fragment = document.createDocumentFragment();
 
-      // Only split if parent is block-ish (your original intent)
+      // Only split if parent is block-ish 
       const blockElements = ["P", "LI", "DIV", "H1", "H2", "H3", "H4", "H5", "H6"];
       const shouldSplit = blockElements.includes(parent.tagName);
 
       if (!shouldSplit) {
-        // Keep inline nodes intact (your original behavior)
+        // Keep inline nodes intact 
         const span = document.createElement("span");
         span.className = "cosmic-letter";
         span.textContent = node.nodeValue;
@@ -41,19 +41,17 @@ export default function CosmicText({ children, radius = 35 }) {
         return;
       }
 
-      // Split into tokens: words + whitespace (keeps spaces as wrap points)
+      // Split into tokens: words + whitespace (spaces as wrap points)
       const tokens = node.nodeValue.split(/(\s+)/);
 
       tokens.forEach((tok) => {
         if (!tok) return;
 
-        // Whitespace: keep as text (wrap can happen here)
         if (/^\s+$/.test(tok)) {
           fragment.appendChild(document.createTextNode(tok));
           return;
         }
 
-        // Word: wrap it so it can't break mid-word
         const wordSpan = document.createElement("span");
         wordSpan.className = "cosmic-word";
 
@@ -104,7 +102,6 @@ export default function CosmicText({ children, radius = 35 }) {
     };
   }, [radius]);
 
-  // IMPORTANT: do NOT wrap the whole app in a <span> (as discussed earlier)
   return (
     <div ref={containerRef} className="cosmic-root">
       {children}

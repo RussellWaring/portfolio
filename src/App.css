@@ -9,31 +9,30 @@ Description: Shared layout utilities like .container, global spacing helpers, ap
   z-index: -1;
 }
 
-/* ===== App Layout (THIS fixes footer position) ===== */
+/* === App Layout (THIS fixes footer position) === */
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* ===== Shared Layout Container ===== */
+/* === Shared Layout Container === */
 
 .container {
   width: min(1100px, 100% - 3rem);
   margin-inline: auto;
 }
 
-/* ===== Routed Page Wrapper ===== */
+/* === Routed Page Wrapper === */
 
 .content {
   position: relative;
   z-index: 1;
   flex: 1;
   /* padding-bottom: 80px; */
-  /* prevents overlap if footer becomes fixed later */
 }
 
-/* ===== Home Page Specific ===== */
+/* === Home Page Specific === */
 .container--fluid {
   width: 100%;
   padding-inline: clamp(24px, 6vw, 96px);

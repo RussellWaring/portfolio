@@ -23,11 +23,7 @@
   justify-content: center;
 }
 
-/* ==========================================================
-   DEVICE FRAMES: SAME DIMENSIONS FOR ALL
-   - Mobile vs laptop differs ONLY by frame styling
-   - The preview rectangle stays identical
-========================================================== */
+/* === DEVICE FRAMES === */
 .device-frame {
   position: relative;
 
@@ -45,7 +41,6 @@
   place-items: center;
 }
 
-/* “screen” inset border */
 .device-frame::before {
   content: "";
   position: absolute;
@@ -100,7 +95,6 @@
   border-radius: 12px;
 }
 
-/* optional: slightly thicker bezel for “phone” feel */
 .frame--mobile img {
   inset: 8px;
   width: calc(100% - 16px);
@@ -156,7 +150,6 @@
   opacity: 0.9;
 }
 
-/* CTA (not a nested <a>; should be a <span> in JSX) */
 .project-link {
   display: inline-flex;
   align-items: center;
@@ -174,9 +167,7 @@
   transform: translateX(4px);
 }
 
-/* =========================
-   MOBILE LAYOUT
-========================= */
+/* === MOBILE LAYOUT === */
 @media (max-width: 768px) {
   .project {
     height: auto;

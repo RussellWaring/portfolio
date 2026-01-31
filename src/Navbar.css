@@ -32,9 +32,7 @@ Description: Only navbar styles
     gap: 100px;
 }
 
-/* =========================
-   DESKTOP NAV LINKS
-========================= */
+/* === DESKTOP NAV LINKS === */
 .navbar__links {
     display: flex;
     align-items: center;
@@ -55,7 +53,6 @@ Description: Only navbar styles
 .navbar__links a:hover {
     opacity: 1;
     transform: scale(1.5);
-    /* old was 1.5; this keeps spacing sane */
 }
 
 .navbar__links a:active {
@@ -63,15 +60,12 @@ Description: Only navbar styles
     opacity: 0.92;
 }
 
-/* Keep your active-page styling as-is (no underline added) */
 .navbar__links .isActive {
     opacity: 1;
     font-weight: 600;
 }
 
-/* =========================
-   THEME DROPDOWN (DESKTOP)
-========================= */
+/* === THEME DROPDOWN (DESKTOP) === */
 .themeMenu {
     position: relative;
 }
@@ -124,7 +118,7 @@ body:not([data-theme="light"]) .themeMenu__dropdown {
     gap: 8px;
 }
 
-/* Add slight motion here too, so dropdown doesn’t feel dead */
+/* Add slight motion, so dropdown doesn’t feel dead */
 .themeMenu__item {
     transition: transform 0.16s ease, background 0.16s ease, opacity 0.16s ease;
 }
@@ -148,9 +142,7 @@ body:not([data-theme="light"]) .themeMenu__item:hover {
     opacity: 0.8;
 }
 
-/* =========================
-   MOBILE HAMBURGER
-========================= */
+/* ===,MOBILE HAMBURGER === */
 .mobileMenu {
     display: none;
     position: relative;
@@ -245,7 +237,7 @@ body:not([data-theme="light"]) .mobileMenu__divider {
     align-items: center;
     gap: 8px;
 
-    /* Motion for theme row too */
+    /* Motion for theme row */
     transition: transform 0.16s ease, background 0.16s ease, opacity 0.16s ease;
 }
 
@@ -268,9 +260,7 @@ body:not([data-theme="light"]) .mobileMenu__themeRow:hover {
     opacity: 0.7;
 }
 
-/* =========================
-   RESPONSIVE BEHAVIOR
-========================= */
+/* === RESPONSIVE BEHAVIOR === */
 @media (max-width: 900px) {
     .navbar__links {
         display: none;

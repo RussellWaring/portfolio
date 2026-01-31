@@ -23,7 +23,7 @@ import "./Footer.css";
 function AppInner() {
   const location = useLocation();
 
-  // 🌙 Default theme is dark
+  // Default theme is dark
   const [theme, setTheme] = useState("dark");
 
   // Apply theme to <body> so CSS variables react

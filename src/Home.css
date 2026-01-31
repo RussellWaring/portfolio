@@ -70,7 +70,6 @@ Description: Home page-specific styles
     line-height: 1.05;
     letter-spacing: 0.3px;
 
-    /* prevents the "last name drops even at full width" vibe */
     white-space: nowrap;
 }
 
@@ -90,9 +89,7 @@ Description: Home page-specific styles
     color: var(--mutedText);
 }
 
-/* =========================
-   RIGHT SIDE
-========================= */
+/* === RIGHT SIDE === */
 .home__right {
     display: grid;
     gap: 18px;
@@ -115,7 +112,6 @@ Description: Home page-specific styles
     justify-content: center;
     padding: 6px;
     font-size: 40px;
-    /* controls icon size */
     color: var(--text);
     transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -130,7 +126,6 @@ Description: Home page-specific styles
     width: 100%;
     text-align: center;
 
-    /* prevents it from stretching too wide */
     max-width: 520px;
 }
 
@@ -181,12 +176,8 @@ Description: Home page-specific styles
     color: #fff;
 }
 
-/* =========================
-   RESPONSIVE FIXES
-   (THIS is the part you were missing)
-========================= */
+/* === RESPONSIVE FIXES === */
 
-/* Start stacking EARLIER (prevents “medium-width overlap”) */
 @media (max-width: 1100px) {
     .home__grid {
         grid-template-columns: 1fr;
@@ -214,7 +205,6 @@ Description: Home page-specific styles
         margin-right: auto;
     } */
 
-    /* give the layout some breathing room */
     .home {
         align-items: flex-start;
         padding-top: 40px;

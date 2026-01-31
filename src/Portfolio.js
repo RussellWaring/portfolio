@@ -23,8 +23,9 @@ const Portfolio = () => {
                     textAlign: "center",
                 }}
             >
-                A few recent projects I have worked on. Each project features an image preview 
-                and tags identifying technologies and practices used in the development
+                A few recent projects I have worked on. Each project features an
+                image preview and tags identifying technologies and practices
+                used in the development
             </p>
             <div
                 style={{
