@@ -1,6 +1,5 @@
 // import BlogList from './BlogList';
 // import useFetch from './useFetch';
-import CosmicText from "./CosmicText";
 
 
 const DevBlog = () => {
@@ -10,8 +9,12 @@ const DevBlog = () => {
 
   return (
     <div className="dev-blog">
-      <CosmicText>
-        <h1 className="space-text">Dev Blog</h1>
+      <h1 className="space-text" style={{
+        textAlign: 'center',
+        marginTop: '100px'
+      }}>
+        Dev Blog
+      </h1>
         <p className="space-text" style={{
           maxWidth: '600px',
           margin: '50px auto 75px auto',
@@ -20,7 +23,6 @@ const DevBlog = () => {
           color: '#ccc',
           textAlign: 'center'
           }}>Coming soon...</p>
-      </CosmicText>
     </div>
   );
 }

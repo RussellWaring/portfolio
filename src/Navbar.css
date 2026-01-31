@@ -1,0 +1,286 @@
+/* 
+File: Navbar.css
+Summary: Navbar Wrapper
+Description: Only navbar styles
+*/
+
+/* =========================
+   NAVBAR LAYOUT
+========================= */
+.navbar {
+    position: relative;
+    z-index: 20;
+    padding: 18px 0;
+}
+
+.navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Brand / Name */
+.navbar__brand {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Right side container */
+.navbar__right {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+/* =========================
+   DESKTOP NAV LINKS
+========================= */
+.navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+/* Restore "alive" behavior: transform + smooth transitions */
+.navbar__links a {
+    opacity: 0.85;
+    display: inline-block;
+    /* needed for transform */
+    transform-origin: center;
+    /* feels natural */
+    transition: transform 0.18s ease, opacity 0.18s ease;
+    will-change: transform;
+}
+
+.navbar__links a:hover {
+    opacity: 1;
+    transform: scale(1.5);
+    /* old was 1.5; this keeps spacing sane */
+}
+
+.navbar__links a:active {
+    transform: scale(1.25);
+    opacity: 0.92;
+}
+
+/* Keep your active-page styling as-is (no underline added) */
+.navbar__links .isActive {
+    opacity: 1;
+    font-weight: 600;
+}
+
+/* =========================
+   THEME DROPDOWN (DESKTOP)
+========================= */
+.themeMenu {
+    position: relative;
+}
+
+.themeMenu__toggle {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+}
+
+.themeMenu__chev {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.themeMenu__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 160px;
+    padding: 8px;
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+    display: grid;
+    gap: 6px;
+    z-index: 50;
+}
+
+body:not([data-theme="light"]) .themeMenu__dropdown {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.themeMenu__item {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Add slight motion here too, so dropdown doesn’t feel dead */
+.themeMenu__item {
+    transition: transform 0.16s ease, background 0.16s ease, opacity 0.16s ease;
+}
+
+.themeMenu__item:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transform: translateX(2px);
+}
+
+body:not([data-theme="light"]) .themeMenu__item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.themeMenu__item:active {
+    transform: translateX(1px) scale(0.99);
+    opacity: 0.92;
+}
+
+.themeMenu__check {
+    margin-left: auto;
+    opacity: 0.8;
+}
+
+/* =========================
+   MOBILE HAMBURGER
+========================= */
+.mobileMenu {
+    display: none;
+    position: relative;
+}
+
+.mobileMenu__toggle {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger {
+    width: 22px;
+    height: 16px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text);
+    opacity: 0.9;
+}
+
+/* Mobile dropdown panel */
+.mobileMenu__dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    min-width: 210px;
+    padding: 12px;
+    border-radius: 14px;
+    background: var(--bg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+    display: grid;
+    gap: 10px;
+    z-index: 50;
+}
+
+body:not([data-theme="light"]) .mobileMenu__dropdown {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileMenu__dropdown a {
+    padding: 8px 8px;
+    border-radius: 8px;
+    color: var(--text);
+
+    /* Mobile link motion */
+    transition: transform 0.16s ease, background 0.16s ease, opacity 0.16s ease;
+    transform-origin: left center;
+}
+
+.mobileMenu__dropdown a:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transform: translateX(3px);
+}
+
+body:not([data-theme="light"]) .mobileMenu__dropdown a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.mobileMenu__dropdown a:active {
+    transform: translateX(1px) scale(0.99);
+    opacity: 0.92;
+}
+
+.mobileMenu__divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+body:not([data-theme="light"]) .mobileMenu__divider {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.mobileMenu__themeRow {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    /* Motion for theme row too */
+    transition: transform 0.16s ease, background 0.16s ease, opacity 0.16s ease;
+}
+
+.mobileMenu__themeRow:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transform: translateX(2px);
+}
+
+body:not([data-theme="light"]) .mobileMenu__themeRow:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.mobileMenu__themeRow:active {
+    transform: translateX(1px) scale(0.99);
+    opacity: 0.92;
+}
+
+.mobileMenu__muted {
+    margin-left: auto;
+    opacity: 0.7;
+}
+
+/* =========================
+   RESPONSIVE BEHAVIOR
+========================= */
+@media (max-width: 900px) {
+    .navbar__links {
+        display: none;
+    }
+
+    .themeMenu {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: inline-flex;
+    }
+}

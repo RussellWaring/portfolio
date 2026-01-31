@@ -1,6 +1,54 @@
-* {
+/* 
+File: index.css
+Summary: Global Reset & Base Styles
+Description: Reset styles, base typography, body styles, background defaults, scroll behavior 
+*/
+:root {
+  --bg: #212121;
+  --text: #f2f2f2;
+  --mutedText: rgba(255, 255, 255, 0.78);
+
+  --particle: #f2f2f2;
+
+  /* For dropdown/popup surfaces */
+  --surface: rgba(20, 20, 20, 0.95);
+  --surfaceBorder: rgba(255, 255, 255, 0.14);
+
+  /* For Project cards */
+    --cardBorder: rgba(255, 255, 255, 0.12);
+    --cardHoverShadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+  
+    --tagText: var(--text);
+    --tagMuted: var(--mutedText);
+}
+
+/* Light mode overrides */
+body[data-theme="light"] {
+  --bg: #f2f2f2;
+  --text: #212121;
+  --mutedText: rgba(0, 0, 0, 0.72);
+
+  --particle: #212121;
+
+  /* light dropdown surface */
+  --surface: rgba(242, 242, 242, 0.98);
+  --surfaceBorder: rgba(0, 0, 0, 0.14);
+
+  /* Project cards */
+  --cardBorder: rgba(0, 0, 0, 0.10);
+  --cardHoverShadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  color: #ffffff;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -8,166 +56,21 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #212121;
-  color: #f2f2f2; /* Optional: ensures text is readable on dark background */
+
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.navbar {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.navbar h1 {
-  color: #f2f2f2;
-}
-/* shoots them over to the right */
-.navbar .links {
-  margin-left: auto;
-  display: flex;        /* keep the links inline horizontally */
-  gap: 16px;            /* consistent spacing */
-}
-.navbar a {
-  text-decoration: none;
-  padding: 6px;
-  color: #fff;          /* make sure they're visible */
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-.navbar a:hover {
-  color: #f2f2f2;
-  transform: scale(1.5);
-}
-
-.navbar a:active {
-  transform: scale(1.25);
-  /* animation: pulse 0.2s ease; */
-
-  color: #ddd; /* subtle fade if you want */
-}
-
-/* @keyframes pulse {
-  0% { transform: scale(1.25); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1.25); }
-} */
-
-
-/* For portfolio images */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: zoom-out;
-  z-index: 999;
-  animation: fadeIn 0.2s ease-out;
-}
-
-.modal-image {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 6px;
-  animation: scaleIn 0.15s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.85);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.home {
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-}
-
-.home-hero {
-  flex: 1;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 40px;
-}
-
-.home-chevron-slot {
-  /* this sits at the bottom of the landing area */
-  padding-bottom: 22px;
-  display: flex;
-  justify-content: center;
-}
-
-/* .resume-anchor {
-  padding-top: 200px;
-} */
-
-/* For Home page buttons */
-.cta-row {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-.cta {
-  padding: 10px 22px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.cta:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.cta.primary {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(94, 94, 94, 0.85);
-  color: #fff;
-}
-
-.cta.secondary {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(94, 94, 94, 0.15);
-  color: #fff;
-  /* backdrop-filter: blur(10px); */
-}
-
-.cta-row a.cta,
-.cta-row a.cta:visited,
-.cta-row a.cta:hover,
-.cta-row a.cta:active {
-  text-decoration: none;
-  color: inherit;
 }

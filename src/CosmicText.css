@@ -44,3 +44,13 @@
     animation: cosmicFlow 3s linear infinite;
     /* rippling gradient animation */
 }
+
+.cosmic-root {
+    display: contents;
+}
+
+/* Prevent mid-word wrapping */
+.cosmic-word {
+    display: inline-block;
+    white-space: nowrap;
+}

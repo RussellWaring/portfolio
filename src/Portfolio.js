@@ -1,56 +1,20 @@
-// import ProjectList from './ProjectList';
-// import useFetch from './useFetch';
-
-// const Portfolio = () => {
-
-
-//   return (
-//     <div className="portfolio">
-//       <h1>Portfolio</h1>
-//     </div>
-//   );
-// }
- 
-// export default Portfolio;
-
-// import Project from './Project';
-
-// const Portfolio = () => {
-//   return (
-//     <div className="portfolio">
-//       <h1>Portfolio</h1>
-//       <p>This page highlights a few projects I have worked on. Each project features a series of tags identifying technologies and practices used in the development process.
-// </p>
-//       <div className="portfolio-wrapper">
-//         <Project
-//           image="https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt5f18c2119ce26485/6668df65db90945e0caf9be6/beautiful-flowers-lotus.jpg?q=70&width=3840&auto=webp"
-//           title="React + Tailwind + Shortened"
-//           description="A brief description of what this project is about."
-//           year="2023"
-//           tags={['react', 'tailwind', 'frontend']}
-//           link="https://example.com/project"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Portfolio;
-
-import CosmicText from "./CosmicText";
 import Project from './Project';
 
 const Portfolio = () => {
   return (
     <div className="portfolio">
-      <CosmicText>
-        <h1 className="space-text">Portfolio</h1>
+      <h1 className="space-text" style={{
+        textAlign: 'center',
+        marginTop: '100px'
+      }}>
+        Portfolio
+      </h1>
         <p className="space-text" style={{
           maxWidth: '600px',
           margin: '50px auto 75px auto',
           lineHeight: '1.6',
           fontSize: '1rem',
-          color: '#ccc',
+          color: 'var(--mutedText)',
           textAlign: 'center'
         }}>
           A few recent projects I have worked on. Each project features a series of tags identifying technologies and practices used in the development process.
@@ -87,7 +51,6 @@ const Portfolio = () => {
             tags={['reactjs', 'ai', 'api', 'agi', 'sql', 'website', 'comingsoon']}
           />
         </div>
-        </CosmicText>
     </div>
   );
 };

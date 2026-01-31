@@ -1,0 +1,249 @@
+/* 
+File: Home.css
+Summary: Page layout
+Description: Home page-specific styles
+*/
+
+/* Fill viewport (minus navbar/footer approximations) and center vertically */
+.home {
+    padding: 0;
+    min-height: calc(100vh - 90px - 60px);
+    display: flex;
+    align-items: center;
+}
+
+/* Two-column layout */
+.home__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+
+    /* IMPORTANT: allow grid children to shrink instead of overflow */
+    min-width: 0;
+}
+
+.home__left,
+.home__right {
+    min-width: 0;
+    /* prevents overflow collisions */
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+.home__left {
+    min-width: 0;
+}
+
+/* Avatar + name block row */
+.home__identity {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-width: 0;
+    /* key for text wrapping sanity */
+}
+
+/* Avatar */
+.home__avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border: 2px solid rgba(255, 255, 255, 0.35); */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+    /* don't let the avatar shrink and cause layout jitter */
+    flex: 0 0 auto;
+}
+
+/* Name + title */
+.home__nameBlock {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+
+.home__name {
+    font-size: clamp(2.3rem, 4.2vw, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: 0.3px;
+
+    /* prevents the "last name drops even at full width" vibe */
+    white-space: nowrap;
+}
+
+.home__title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    opacity: 0.9;
+    line-height: 1.35;
+}
+
+/* Paragraph */
+.home__subtext {
+    max-width: 680px;
+    margin-top: 24px;
+    line-height: 1.7;
+    font-size: 1rem;
+    color: var(--mutedText);
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+.home__right {
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+    width: 100%;
+}
+
+/* Icon row at top */
+.home__socialRow {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Icon buttons */
+.home__iconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    font-size: 40px;
+    /* controls icon size */
+    color: var(--text);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.home__iconButton:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+/* Contact block */
+.home__contactBlock {
+    width: 100%;
+    text-align: center;
+
+    /* prevents it from stretching too wide */
+    max-width: 520px;
+}
+
+.home__contactHeading {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.home__contactText {
+    color: var(--mutedText);
+    line-height: 1.6;
+    font-size: 0.98rem;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* Buttons under blurb */
+.home__buttonRow {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.home__btn {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    font-weight: 650;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.home__btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+.home__btn--primary {
+    background: rgba(94, 94, 94, 0.85);
+    color: #fff;
+}
+
+.home__btn--secondary {
+    background: rgba(94, 94, 94, 0.15);
+    color: #fff;
+}
+
+/* =========================
+   RESPONSIVE FIXES
+   (THIS is the part you were missing)
+========================= */
+
+/* Start stacking EARLIER (prevents “medium-width overlap”) */
+@media (max-width: 1100px) {
+    .home__grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        align-items: start;
+    }
+
+    .home__right {
+        justify-items: center;
+    }
+
+    .home__left {
+        /* text-align: center; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* .home__identity {
+        justify-content: center;
+    }
+
+    .home__subtext {
+        margin-left: auto;
+        margin-right: auto;
+    } */
+
+    /* give the layout some breathing room */
+    .home {
+        align-items: flex-start;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+/* Mobile: identity stacks + allow name to wrap normally */
+@media (max-width: 650px) {
+    .home__identity {
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .home__avatar {
+        width: 170px;
+        height: 170px;
+    }
+
+    .home__name {
+        white-space: normal;
+        /* allow wrap on small screens */
+    }
+
+    .home__subtext {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 520px;
+    }
+}

@@ -20,34 +20,54 @@ export default function CosmicText({ children, radius = 35 }) {
     const textNodes = [];
     while (walker.nextNode()) textNodes.push(walker.currentNode);
 
-    textNodes.forEach(node => {
-        const parent = node.parentNode;
+    textNodes.forEach((node) => {
+      const parent = node.parentNode;
       if (!node.nodeValue.trim()) return;
-      
       if (parent.closest?.('[data-cosmic="ignore"]')) return;
 
-        const fragment = document.createDocumentFragment();
+      const fragment = document.createDocumentFragment();
 
-        // Only split if parent is block-level (h1, h2, h3, p, etc.)
-        const blockElements = ["P", "LI", "DIV", "H1", "H2", "H3", "H4", "H5", "H6"];
-        const shouldSplit = blockElements.includes(parent.tagName);
+      // Only split if parent is block-ish (your original intent)
+      const blockElements = ["P", "LI", "DIV", "H1", "H2", "H3", "H4", "H5", "H6"];
+      const shouldSplit = blockElements.includes(parent.tagName);
 
-        if (shouldSplit) {
-            node.nodeValue.split("").forEach(char => {
-            const span = document.createElement("span");
-            span.className = "cosmic-letter";
-            span.textContent = char === " " ? "\u00A0" : char;
-            fragment.appendChild(span);
-            });
-        } else {
-            // Inline elements or tags: wrap the whole text as one span
-            const span = document.createElement("span");
-            span.className = "cosmic-letter";
-            span.textContent = node.nodeValue;
-            fragment.appendChild(span);
+      if (!shouldSplit) {
+        // Keep inline nodes intact (your original behavior)
+        const span = document.createElement("span");
+        span.className = "cosmic-letter";
+        span.textContent = node.nodeValue;
+        fragment.appendChild(span);
+        parent.replaceChild(fragment, node);
+        return;
+      }
+
+      // Split into tokens: words + whitespace (keeps spaces as wrap points)
+      const tokens = node.nodeValue.split(/(\s+)/);
+
+      tokens.forEach((tok) => {
+        if (!tok) return;
+
+        // Whitespace: keep as text (wrap can happen here)
+        if (/^\s+$/.test(tok)) {
+          fragment.appendChild(document.createTextNode(tok));
+          return;
         }
 
-        parent.replaceChild(fragment, node);
+        // Word: wrap it so it can't break mid-word
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "cosmic-word";
+
+        tok.split("").forEach((char) => {
+          const letter = document.createElement("span");
+          letter.className = "cosmic-letter";
+          letter.textContent = char;
+          wordSpan.appendChild(letter);
+        });
+
+        fragment.appendChild(wordSpan);
+      });
+
+      parent.replaceChild(fragment, node);
     });
 
     lettersRef.current = container.querySelectorAll(".cosmic-letter");
@@ -61,27 +81,33 @@ export default function CosmicText({ children, radius = 35 }) {
 
     window.addEventListener("mousemove", handleMouseMove);
 
+    let raf = 0;
     function animate() {
-      lettersRef.current.forEach(letter => {
+      lettersRef.current.forEach((letter) => {
         const rect = letter.getBoundingClientRect();
         const dx = mouse.current.x - (rect.left + rect.width / 2);
         const dy = mouse.current.y - (rect.top + rect.height / 2);
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < radius) {
-          letter.classList.add("active");
-        } else {
-          letter.classList.remove("active");
-        }
+        if (distance < radius) letter.classList.add("active");
+        else letter.classList.remove("active");
       });
 
-      requestAnimationFrame(animate);
+      raf = requestAnimationFrame(animate);
     }
 
     animate();
 
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(raf);
+    };
   }, [radius]);
 
-  return <span ref={containerRef}>{children}</span>;
+  // IMPORTANT: do NOT wrap the whole app in a <span> (as discussed earlier)
+  return (
+    <div ref={containerRef} className="cosmic-root">
+      {children}
+    </div>
+  );
 }

@@ -2,21 +2,18 @@
   display: flex;
   border-radius: 8px;
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
-  /* background: #fff; */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
   margin-bottom: 50px;
   height: 250px;
+
+  /* optional but usually looks better once theme exists */
+  /* border: 1px solid var(--cardBorder); */
+  background: transparent;
 }
 
 .project:hover {
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+  box-shadow: var(--cardHoverShadow);
 }
-
-/* .project-image img {
-  width: 200px;
-  height: 100%;
-  object-fit: cover;
-} */
 
 .project-image {
   flex: 0 0 40%;
@@ -31,22 +28,6 @@
   display: block;
 }
 
-/* .project-image img {
-  max-height: 100%;
-  width: auto;
-  object-fit: contain;
-  display: block;
-} */
-
-
-
-
-/* .project-content {
-  padding: 16px;
-  flex: 1;
-  position: relative;
-} */
-
 .project-content {
   flex: 1;
   padding: 20px;
@@ -54,40 +35,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 12px; /* adds vertical spacing between children */
-}
-
-/* .project-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-} */
-
-.project-year {
-  font-size: 0.9em;
-  color: #fff;
-}
-
-/* .project-description {
-  margin: 8px 0;
-} */
-
-.project-tags span {
-  margin-right: 8px;
-  color: #fff;
-}
-
-/* .project-link {
-  display: inline-block;
-  margin-top: 12px;
-  color: #007bff;
-  text-decoration: underline;
-} */
-
-.portfolio-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  gap: 12px;
 }
 
 .project-header {
@@ -96,32 +44,68 @@
   align-items: baseline;
 }
 
+.project-year {
+  font-size: 0.9em;
+  color: var(--mutedText);
+}
+
 .project-description {
   flex-grow: 1;
   line-height: 1.5;
+  color: var(--text);
 }
 
 .project-tags {
   font-size: 0.9em;
-  color: #aaa;
+  color: var(--text);}
+
+/* If your tags are actual <span> elements */
+.project-tags span {
+  margin-right: 8px;
+  color: var(--mutedtext);
+  opacity: 0.9;
 }
 
+/* If you want tags to look like subtle chips (optional) */
+/* .project-tags span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--cardBorder);
+  background: transparent;
+} */
+
+/* Link */
 .project-link {
   align-self: flex-start;
-  color: #00bfff;
+  color: var(--text);
+  /* theme-aware */
+  opacity: 0.9;
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: 700;
+}
+
+.project-link:hover {
+  opacity: 1;
+}
+
+.portfolio-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 /* ——— responsive tweak below ——— */
 @media (max-width: 768px) {
   .project {
-    flex-direction: column;     /* stack vertically */
+    flex-direction: column;
+    height: auto;
+    /* prevents weird crop on stack */
   }
 
   .project-image,
   .project-content {
-    flex: 1 1 100%;             /* full width */
+    flex: 1 1 100%;
   }
 
   .project-image img {

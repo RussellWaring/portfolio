@@ -1,37 +1,45 @@
+/* 
+File: App.css
+Summary: Background layer
+Description: Shared layout utilities like .container, global spacing helpers, app wrapper rules
+*/
 #tsparticles {
   position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  inset: 0;
   z-index: -1;
 }
+
+/* ===== App Layout (THIS fixes footer position) ===== */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Shared Layout Container ===== */
+
+.container {
+  width: min(1100px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+/* ===== Routed Page Wrapper ===== */
 
 .content {
   position: relative;
   z-index: 1;
-  color: white;
-  text-align: center;
-  margin-top: 20vh;
+  flex: 1;
+  /* padding-bottom: 80px; */
+  /* prevents overlap if footer becomes fixed later */
 }
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+/* ===== Home Page Specific ===== */
+.container--fluid {
   width: 100%;
-  background-color: transparent;
-  z-index: 2;
+  padding-inline: clamp(24px, 6vw, 96px);
 }
 
-.footer-inner {
-  max-width: 1200px;        /* or whatever width */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 20px;
-  font-size: 0.9rem;
-  color: #aaa;
-  opacity: 0.25;
+.container--wide {
+  max-width: 1600px;
+  margin-inline: auto;
 }
