@@ -44,10 +44,11 @@ const Portfolio = () => {
                         "react.js",
                         "node.js",
                         "vite",
-                        "firebase",
+                        "supabase",
                         "authentication",
                         "api",
                         "ai",
+                        "cloudflare",
                     ]}
                     link="https://github.com/RussellWaring/start-it-overview"
                 />
@@ -101,10 +102,25 @@ const Portfolio = () => {
                     link="https://github.com/RussellWaring/Donation-Management-System"
                 />
                 <Project
+                    image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/website2.PNG"
+                    title="Portfolio"
+                    description="Personal site and portfolio showcase. The site you are currently on."
+                    year="2025-2026"
+                    tags={[
+                        "website",
+                        "react.js",
+                        "css",
+                        "html",
+                        "render",
+                        "data analytics",
+                        "deployed"
+                    ]}
+                />
+                <Project
                     image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/website.png"
                     title="Pizzamymind"
                     description="Unofficial pie ranking website of the Greater Toronto Area. Uses ReactJS, AGI API, and user authentication to create an interactable experience for seeking the best pizza in Toronto."
-                    year="2024-2025"
+                    year="2026"
                     tags={[
                         "reactjs",
                         "ai",
