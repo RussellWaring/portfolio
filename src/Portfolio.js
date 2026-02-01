@@ -49,7 +49,7 @@ const Portfolio = () => {
                         "api",
                         "ai",
                     ]}
-                    link="https://russellwaring.github.io/start-it/#/"
+                    link="https://github.com/RussellWaring/start-it-overview"
                 />
                 <Project
                     device="mobile"
@@ -99,6 +99,21 @@ const Portfolio = () => {
                         "data analysis",
                     ]}
                     link="https://github.com/RussellWaring/Donation-Management-System"
+                />
+                <Project
+                    image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/website.png"
+                    title="Pizzamymind"
+                    description="Unofficial pie ranking website of the Greater Toronto Area. Uses ReactJS, AGI API, and user authentication to create an interactable experience for seeking the best pizza in Toronto."
+                    year="2024-2025"
+                    tags={[
+                        "reactjs",
+                        "ai",
+                        "api",
+                        "agi",
+                        "sql",
+                        "website",
+                        "comingsoon",
+                    ]}
                 />
             </div>
         </div>
