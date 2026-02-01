@@ -50,6 +50,7 @@ const Portfolio = () => {
                         "api",
                         "ai",
                         "cloudflare",
+                        "automation"
                     ]}
                     link="https://github.com/RussellWaring/start-it-overview"
                 />
