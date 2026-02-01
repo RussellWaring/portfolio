@@ -41,8 +41,9 @@ const Portfolio = () => {
                     description="A job board web app that helps users browse and explore entry-level opportunities."
                     year="2026-Present"
                     tags={[
-                        "react.js",
-                        "node.js",
+                        "website",
+                        "react",
+                        "node",
                         "vite",
                         "supabase",
                         "authentication",
@@ -59,6 +60,7 @@ const Portfolio = () => {
                     description="A camera-first mobile application that leverages an image processing API and the Google Maps API to create an engaging experience for identifying birds in the wild."
                     year="2022-2023"
                     tags={[
+                        "mobile",
                         "flutter",
                         "dart",
                         "api",
@@ -66,7 +68,6 @@ const Portfolio = () => {
                         "json",
                         "authentication",
                         "ai",
-                        "mobile",
                     ]}
                     link="https://github.com/Tsukiyomi-Inari/BirdNerd"
                 />
@@ -77,10 +78,10 @@ const Portfolio = () => {
                     description="A pure Java coded desktop game leveraging OOP principles and an MVC approach to managing structural logic. Features complex use of the A* algorithm."
                     year="2021-2025"
                     tags={[
+                        "desktop",
                         "java",
                         "mvc",
                         "object-orientated",
-                        "desktop",
                         "algorithms",
                     ]}
                 />
@@ -91,9 +92,10 @@ const Portfolio = () => {
                     description="WPF desktop CRUD app for tracking donations by user. Featured data visualization, integrated SQL SERVER data operations and reporting style outputs."
                     year="2022"
                     tags={[
+                        "desktop",
                         "wpf",
                         "xaml",
-                        "..net",
+                        ".net",
                         "sql server",
                         "c#",
                         "stored procedures",
@@ -108,12 +110,12 @@ const Portfolio = () => {
                     year="2025-2026"
                     tags={[
                         "website",
-                        "react.js",
+                        "react",
                         "css",
                         "html",
                         "render",
                         "data analytics",
-                        "deployed"
+                        "deployed",
                     ]}
                 />
                 <Project
@@ -122,12 +124,11 @@ const Portfolio = () => {
                     description="Unofficial pie ranking website of the Greater Toronto Area. Uses ReactJS, AGI API, and user authentication to create an interactable experience for seeking the best pizza in Toronto."
                     year="2026"
                     tags={[
-                        "reactjs",
+                        "website",
+                        "react",
                         "ai",
                         "api",
-                        "agi",
                         "sql",
-                        "website",
                         "comingsoon",
                     ]}
                 />
