@@ -38,7 +38,7 @@ const Portfolio = () => {
                     device="laptop"
                     image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/start-it.png"
                     title="start-it.ca"
-                    description="A job board web app that helps users browse and explore entry-level opportunities."
+                    description="A full-stack job board that automatically aggregates and curates entry-level opportunities using an automated data pipeline and AI-assisted vetting."
                     year="2026-Present"
                     tags={[
                         "website",
@@ -50,7 +50,7 @@ const Portfolio = () => {
                         "api",
                         "ai",
                         "cloudflare",
-                        "automation"
+                        "automation",
                     ]}
                     link="https://github.com/RussellWaring/start-it-overview"
                 />
