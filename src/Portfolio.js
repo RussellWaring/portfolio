@@ -98,7 +98,7 @@ const Portfolio = () => {
                         "xaml",
                         ".net",
                         "sql server",
-                        "c#",
+                        "c sharp",
                         "stored procedures",
                         "data analysis",
                     ]}
