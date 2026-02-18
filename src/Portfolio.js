@@ -35,6 +35,22 @@ const Portfolio = () => {
                 }}
             >
                 <Project
+                    device="mobile"
+                    image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/brother-app.png"
+                    title="brother"
+                    description="A smart security camera viewer mobile app built with Flutter. Features intuitive design and simplified device observability."
+                    year="2026-Present"
+                    tags={[
+                        "mobile",
+                        "flutter",
+                        "aws",
+                        "authentication",
+                        "docker",
+                        "terraform",
+                        "api"
+                    ]}
+                />
+                <Project
                     device="laptop"
                     image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/start-it.png"
                     title="start-it.ca"
