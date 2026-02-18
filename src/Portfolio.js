@@ -47,7 +47,7 @@ const Portfolio = () => {
                         "authentication",
                         "docker",
                         "terraform",
-                        "api",
+                        "dynamodb",
                         "comingsoon"
                     ]}
                 />
