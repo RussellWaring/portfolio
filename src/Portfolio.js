@@ -47,7 +47,8 @@ const Portfolio = () => {
                         "authentication",
                         "docker",
                         "terraform",
-                        "api"
+                        "api",
+                        "comingsoon"
                     ]}
                 />
                 <Project
