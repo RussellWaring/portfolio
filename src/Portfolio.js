@@ -37,8 +37,8 @@ const Portfolio = () => {
                 <Project
                     device="mobile"
                     image="https://raw.githubusercontent.com/RussellWaring/GIFS/refs/heads/main/brother-app.png"
-                    title="brother"
-                    description="A smart security camera viewer mobile app built with Flutter. Features intuitive design and simplified device observability."
+                    title="Smart Security Camera Viewer"
+                    description="A smart security camera viewer mobile app. Features intuitive design and simplified device observability."
                     year="2026-Present"
                     tags={[
                         "mobile",
@@ -48,8 +48,9 @@ const Portfolio = () => {
                         "docker",
                         "terraform",
                         "dynamodb",
-                        "comingsoon"
+                        "comingsoon",
                     ]}
+                    link="https://github.com/RussellWaring/security-cam-viewer-overview"
                 />
                 <Project
                     device="laptop"
