@@ -1,0 +1,19 @@
+.dev-blog {
+  padding-bottom: 80px;
+}
+
+.dev-blog__title {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.dev-blog__container {
+  max-width: 700px;
+  margin: 40px auto 0 auto;
+  padding: 0 16px;
+}
+
+.dev-blog__tag-indicator {
+  color: var(--mutedText);
+  margin-bottom: 20px;
+}

@@ -1,0 +1,15 @@
+{
+  "blogs": [
+    {
+      "id": "kill-the-internet",
+      "title": "Kill The Internet",
+      "date": "2026-02-25",
+      "updated": null,
+      "tags": ["dystopian", "future", "technology", "artificial intelligence", "surveillance state"],
+      "excerpt": "Speculating about a dystopian internet riddled with AI slop.",
+      "body": "My brother gave me a ride home the other day. As many conversations go these days, we started speculating about A.I.\n\nWe spoke about a future in which the internet was overrun with rampant AI programs that would rapidly expand or multiply. These programs would generate content of all varities as well as seek out any unique activity or users and aggressively spam them with advertisements and attempts to engagement (i.e., everything you click leading to recursive pop-ups and chat windows appearing which immediately begin soliciting messages to the user). The internet would become so polluted, that an entirely new internet would be necessary to be able to conduct any sort of unhindered business.\n\nThe new internet, whatever it may be referred to as, would be highly regulated and monitored, under full surveillance of governing bodies offering zero privacy. If users were not willing to sign-up with government issued ID and did not meet the qualifications, they would be barred from accessing this new internet. It would then be at their discretion to connect to the abandoned, old internet and be subject to the immediate exposure and intrusion of the AI-riddled web (connecting to this version of the internet would almost certainly expose your devices and data to the pervasive AI).\n\nIt's an interesting thought, and a future I hope never exists.\n\nPS - an alternative: rather than the AI-riddled internet continuing to exist, perhaps it is entirely shutdown, so that the new internet under full surveillance becomes the only option.",
+      "draft": false,
+      "pinned": false
+    }
+  ]
+}

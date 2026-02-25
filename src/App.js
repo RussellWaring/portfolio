@@ -13,6 +13,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Portfolio from "./Portfolio";
 import DevBlog from "./DevBlog";
+import BlogDetails from "./BlogDetails";
 import Footer from "./Footer";
 
 import "./App.css";
@@ -48,6 +49,10 @@ function AppInner() {
 
               <Route path="/portfolio">
                 <Portfolio />
+              </Route>
+
+              <Route path="/blog/:id">
+                <BlogDetails/>
               </Route>
 
               <Route path="/blog">
