@@ -116,7 +116,6 @@ body[data-theme="light"] .dev-blog__tagPill.isActive {
   border-color: color-mix(in srgb, var(--accentColor) 45%, rgba(0,0,0,0.18));
   color: var(--textColor);
   opacity: 1;
-  /* font-weight: 600; */
 }
 
 /* optional: make the active pill subtly “branded” */

@@ -23,6 +23,20 @@ Description: Only navbar styles
 .navbar__brand {
     font-weight: 600;
     letter-spacing: 0.3px;
+    text-decoration: none;
+    /* color: inherit; */
+    transition: transform 0.18s ease, opacity 0.18s ease;
+    will-change: transform;
+}
+
+.navbar__brand:hover{
+    opacity: 1;
+    /* transform: scale(1.1); */
+}
+
+.navbar__brand:active {
+    transform: scale(.95);
+    opacity: 0.92;
 }
 
 /* Right side container */
