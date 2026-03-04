@@ -1,9 +1,6 @@
 import "./Home.css";
 
 const Home = () => {
-  const openResume = () => {
-    window.open("/RussellWaring_Resume.pdf", "_blank", "noopener,noreferrer");
-  };
 
   const contactMe = () => {
     window.location.href = "mailto:russell@waring.dev";
