@@ -1,5 +1,16 @@
 {
   "blogs": [
+        {
+      "id": "coding-and-learning-with-ai",
+      "title": "Personal growth in the AI-enabled world",
+      "date": "2026-04-26",
+      "updated": null,
+      "tags": ["growth", "react", "javascript", "programming", "artificial intelligence"],
+      "excerpt": "Continuing to learn code in a world of AI.",
+      "body": "If you spend anytime online, follow the activities of technology companies or any of their constituents then you have most certainly been exposed to the polarizing topic of AI and it's impact on the workforce.\n\nIt comes in two flavours:\n\n-> AI is erasing or replacing your job,\n\n-> AI is a tool to accelerate and optimize your workflow.\n\n If you feel like the authentic path to learning a new technology is lost, here's a sound approach:\n\n1) Follow an online tutorial and build a basic project or two. (Fundamentals) \n\n2) Hash out your vision for a different project, one you are curious or passionate about. Wireframe it - Figma, Mural, PowerPoint, whatever! (Design)\n\n3) Consider the logical structure. How do the components fit together? (System analysis)\n\n4) Build your project. Google or an LLM are handy to find answers or troubleshoot, but as your project grows, they will not keep up with the overall context or big picture. This will position you to take deeper ownership of your evolving project. (Debugging, Troubleshooting, Production)\n\nSure, this list is an oversimplification of the development process, but it's an effective start.\n\nHappy coding!",
+      "draft": true,
+      "pinned": false
+    },
     {
       "id": "kill-the-internet",
       "title": "Kill The Internet",
